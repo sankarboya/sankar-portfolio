@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>food buddy</title>
+  <link rel="icon" href="/images/animation.jpg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    .logo {
+        font-style: cursive;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #e67e22;
+    }
+
+    nav a {
+      margin: 0 15px;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #e67e22;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      height: 100vh;
+      position: relative;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 2s ease;
+    }
+
+    .hero h1 {
+        transition: all;
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+    }
+
+    .btn-main {
+      background: #e67e22;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-main i {
+      margin-right: 8px;
+    }
+
+    .btn-main:hover {
+      background: #cf711f;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Food Section */
+    .food-section {
+      padding: 60px 20px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    .food-section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .food-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .food-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px orange;
+    }
+
+    .food-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    
+            
+    }
+
+    .food-card h3 {
+      padding: 15px 15px 5px;
+      font-size: 1.2rem;
+      color: #444;
+      
+    }
+
+    .food-card i {
+      color: #e67e22;
+      margin-right: 8px;
+    }
+
+    .order-btn {
+      margin-bottom: 15px;
+      padding: 10px 20px;
+      background: #e67e22;
+      border: none;
+      color: #fff;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .order-btn:hover {
+      background: #cf711f;
+    }
+    .video-aside {
+  background: #fff8f0;
+  padding: 50px 20px;
+  text-align: center;
+  color: #333;
+}
+
+.video-aside h2 {
+  font-size: 2rem;
+  color: #e67e22;
+  margin-bottom: 10px;
+}
+
+.video-aside p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .food-section h2 {
+        font-size: 2rem;
+      }
+    }
+    footer {
+        color: #cf711f;
+  background: #000;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+    }
+    p img{
+        width: 20;
+        height: 20;
+    }
+   #Contact
+   {
+    background: #444;
+    color: white;
+     font-weight: bold;
+     padding-left: 20px;
+
+   }
+   #Contact:hover{
+     color: #e67e22;
+   }
+  
+   
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">🍽 Kotapadu Ruchulu</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a> 
+      <a href="#Contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Welcome kotapadu Ruchulu</h1>
+      <p>Experience flavors from around the world</p>
+      <a href="#menu"><button class="btn-main"><i class="fas fa-utensils"></i> Explore Menu</button></a>
+    </div>
+  </section>
+
+  <!-- Food Items Section -->
+  <section class="food-section" id="menu">
+    <h2>Popular Dishes</h2>
+    <div class="food-grid">
+      <div class="food-card">
+        <img src="https://media.socastsrm.com/wordpress/wp-content/blogs.dir/1166/files/2020/02/cover.jpg" alt="Pizza">
+        <h3><i class="fas fa-pizza-slice"></i> Cheese Burst Pizza</h3>
+        <button class="order-btn">Order Now</button>
+      </div>
+      <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80" alt="Burger">
+        <h3><i class="fas fa-hamburger"></i> Classic Beef Burger</h3>
+        <button class="order-btn">Order Now</button>
+      </div>
+      <div class="food-card">
+        <img src="https://noplatelikehome.com/wp-content/uploads/IMG_3790-1024x694.jpg" alt="Pasta">
+        <h3><i class="fas fa-bowl-food"></i> Italian Pasta</h3>
+        <button class="order-btn">Order Now</button>
+      </div>
+      <div class="food-card">
+        <img src="https://cdn6.dissolve.com/p/D1062_42_404/D1062_42_404_1200.jpg" alt="Sushi">
+        <h3><i class="fas fa-fish"></i> Sushi Platter</h3>
+        <button class="order-btn">Order Now</button>
+      </div>
+      <div class="food-card">
+        <img src="https://leyaana.com/wp-content/uploads/2022/04/thjrkjh-scaled.jpeg" alt="Biryani">
+        <h3><i class="fas fa-drumstick-bite"></i> Hyderabadi Biryani</h3>
+        <button class="order-btn">Order Now</button>
+      </div>
+      <div class="food-card">
+        <img src="http://thespicyapron.com/wp-content/uploads/2016/01/Green-Salad-With-Parmesean.jpg" alt="Salad">
+        <h3><i class="fas fa-leaf"></i> Fresh Green Salad</h3>
+        <button class="order-btn">Order Now</button>
+      </div>
+     
+          </div>
+  </section>
+  <!-- contact -->
+  <section id="Contact">
+    <p>contact me : <br>
+         <i class="fa-solid fa-envelope"></i><a href="mailto:boyasankar42@gmail.com"> &nbsp; boyasankar42@gmail.com</a><br>
+        <i class="fa-solid fa-phone"></i> <a href="tel:+916309583040">6309583040</a>
+  </section>
+
+  <!-- footer -->
+   <footer>
+<div class="container">
+    <p>&copy; 2025 Sankar Boya</p>
+</div>
+</footer>
+
+
+</body>
+</html>
